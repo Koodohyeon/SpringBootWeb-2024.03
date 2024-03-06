@@ -87,10 +87,14 @@ public class BasicController {
 		}
 	}
 	
-	@GetMapping("/path/{uid}/{bid}")
+	// bid에 null을 포함하고 싶을 때 
+	@GetMapping("/path/{uid}/{bid}")		//  @GetMapping(value={"/path/{uid}/{bid}", "/path/{uid}")  
 	@ResponseBody
-	public String path(@PathVariable String uid, @PathVariable int bid) {
+	public String path(@PathVariable String uid, @PathVariable int bid) {	// PathVariable (required=fale) Integer int bid 로 변경
+																			//  bid = (bid == null) ? 0 : bid;
 		return "<h1>uid=" + uid + ", bid=" + bid + "</h1>";
 	}
+	
+	
 	
 }
