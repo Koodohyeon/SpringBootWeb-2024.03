@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+</head>
+<style>
+    th, td { padding: 3px;}
+</style>
+<body style="margin: 50px;">
+    <h1>사용자 목록</h1>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>No.</th>
+            <th>uid</th>
+            <th>uname</th>
+            <th>email</th>
+            <th>regDate</th>
+            <th>pwd</th>
+            <th>액션</th>
+        </tr>
+        <tr th:each="user: ${userList}"> <!-- jsp 에서 var 같은 거-->
+            <td th:text="${userStat.count}"></td>     <!-- user에 루프스테이션? -->
+            <td th:text="${user.uid}">james</td>
+            <td th:text="${user.uname}">제임스</td>
+            <td th:text="${user.email}">james@naver.com</td>
+            <td th:text="${user.regDate}">2024-03-06</td>
+            <td th:text="${user.pwd}">1234</td>
+            <td>
+                <form action="/sb/user/update/{uid}" style="display: inline-block;"><button class="btn btn-primary">수정</button></form>
+                <button class="btn btn-danger">삭제</button>
+            </td>
+        </tr>
+
+    </table>
+   
+</body>
+</html>
