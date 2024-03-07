@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thymeleaf</title>
+    <style>
+        .national {background-color: bisque;}
+        .summer {font-size: 40px;}
+        
+    </style>
+</head>
+<body style="margin: 50px;">
+    <h1>URL 링크</h1>   <!-- 많이 사용하는 방법이니 생각 많이하고 많이 보자-->
+    <hr>
+    <ul>   사용자 관리  <!-- target="_blank" 새창으로 띄우기-->
+        <li><a href="/sb/user/login" target="_blank">로그인</a></li>    <!-- 원래 사용하던 방법-->
+        <li><a th:href="@{/user/login}" target="_blank">로그인</a></li>     <!-- /sb 생략 (context root 생략)-->
+        <li><a href="@{/suer/logout}" target="_blank">로그아웃</a></li>
+        <li></li>
+        <!-- localhost:8090/sb/user/list/1-->
+        <li><a th:href="@{/user/list/{page}(page=${page})}" target="_blank">리스트</a></li> <!-- ex) {x}(x=${page})-->
+        <!-- localhost:8090/sb/user/update/james-->
+        <li><a th:href="@{/user/update/{uid}(uid=${uid})}" target="_blank">사용자 수정</a></li> <!-- ex) {x}(x=${page})-->
+        <!-- localhost:8090/sb/tl/params?uid=james&page=1 -->
+        <li><a th:href="@{/tl/params(uid=${uid}, page=${page})}" target="_blank">파라메터 확인</a></li>
+   </ul>
+   <ul> 리처럴
+        <li>'hello' + ' world!' = <span th:text="'hello' + ' world!'"></span></li>
+        <li>'hello world!' = <span th:text="'hello world!'"></span></li>
+        <li>'hello ' + ${data} = <span th:text="'hello ' + ${data}"></span></li>
+        <li>리터럴 대체 |hello ${data}| = <span th:text="|hello ${data}|"></span></li>
+    </ul>
+      
+</body>
+</html>
